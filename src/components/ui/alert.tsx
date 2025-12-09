@@ -4,8 +4,10 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'destructive';
 }
 
+type AlertVariant = NonNullable<AlertProps['variant']>;
+
 export function Alert({ className, variant = 'default', ...props }: AlertProps) {
-  const variants: Record<AlertProps['variant'], string> = {
+  const variants: Record<AlertVariant, string> = {
     default: 'bg-slate-50 text-slate-900 border-slate-200',
     destructive: 'bg-red-50 text-red-800 border-red-200',
   };

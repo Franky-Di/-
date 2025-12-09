@@ -9,7 +9,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   { className, variant = 'primary', children, ...props },
   ref,
 ) {
-  const variants: Record<ButtonProps['variant'], string> = {
+  type Variant = NonNullable<ButtonProps['variant']>;
+  const variants: Record<Variant, string> = {
     primary: 'bg-slate-900 text-white hover:bg-slate-800',
     outline: 'border border-slate-200 hover:bg-slate-50 text-slate-900',
     ghost: 'text-slate-700 hover:bg-slate-100',
