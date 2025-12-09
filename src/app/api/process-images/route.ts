@@ -72,8 +72,9 @@ export async function POST(req: NextRequest) {
 
     const archive = archiver('zip', { zlib: { level: 9 } });
     const stream = new PassThrough();
-    archive.on('error', (err) => {
-      stream.destroy(err);
+    archive.on('error', (err: unknown) => {
+      const error = err instanceof Error ? err : new Error('archive error');
+      stream.destroy(error);
     });
     archive.pipe(stream);
 
